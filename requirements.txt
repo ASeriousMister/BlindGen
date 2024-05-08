@@ -1,0 +1,5 @@
+tk
+hdwallet
+monero
+qrcode
+pdfkit
