@@ -11,6 +11,8 @@ import qrcode
 import pdfkit
 from os.path import exists
 import subprocess
+import bitcash
+from bitcash import Key
 
 
 # Obtain secure random numbers
@@ -283,6 +285,29 @@ class ThirdWindow:
   #          print(f'Wallet private key: {ETH_priv}')
             addr1 = hdwallet.p2pkh_address()
   #          print(coin_sel, ' Address: ', addr1)
+            makeqr(addr1,'address.png')
+            # Creating PDF
+            ft = open('PaperWallet/temp.html', 'w')
+            ft.write('<!doctype html>\n<body>')
+            if exists('PaperWallet/logo.png'):
+                ft.write('<p><img src="logo.png" width="100" height="100"></p>')
+            ft.write(f'<h4>{coin_sel} paper wallet</h4>')
+            ft.write('<p><strong>Public address: </strong>' + addr1 + '</p>')
+            ft.write('<p><img src="address.png" width="200" height="200"></p>')  # Check path
+            ft.write('<p></p><p></p><p><em>Make sure to have both parts of the private key before sending funds<br></em></p>')
+            ft.write('<p></p><p></p><p><em>Made with blindgen.py<br>More info at https://anubitux.org</em></p>')
+            ft.write('</body>')
+            ft.close()
+            pdfkit.from_file('PaperWallet/temp.html', 'PaperWallet/Public.pdf', options={"enable-local-file-access": ""})
+            os.remove('PaperWallet/temp.html')
+            os.remove('PaperWallet/address.png')
+            subprocess.run(['xdg-open', 'PaperWallet/Public.pdf'])
+        elif coin_sel == 'Bitcoin Cash':
+            hdwallet: HDWallet = HDWallet(symbol=coin)
+            hdwallet.from_private_key(private_key=priv_key)
+            WIF_priv = hdwallet.wif()
+            key = Key(WIF_priv)
+            addr1 = key.address
             makeqr(addr1,'address.png')
             # Creating PDF
             ft = open('PaperWallet/temp.html', 'w')
