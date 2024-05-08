@@ -67,6 +67,8 @@ class FirstWindow:
         input_text = self.input_text.get()
         if input_text == '':
             show_popup('Please insert some text in the proper box before generating the 1/2 part of the private key')
+        elif exists('PaperWallet/halfkey1.pdf'):
+            show_popup('You already created the first part of th private key, click on the other button to go to the next step')
         else:
             # Add random system entropy
             extra_ent = str(system_random.randint(0, sys.maxsize))
@@ -132,6 +134,8 @@ class SecondWindow:
         input_text = self.input_text.get()
         if input_text == '':
             show_popup('Please insert some text in the proper box before generating the 2/2 part of the private key')
+        elif exists('PaperWallet/halfkey2.pdf'):
+            show_popup('You already created the second part of th private key, click on the other button to go to the next step')
         else:
             # Add random system entropy
             extra_ent = str(system_random.randint(0, sys.maxsize))
