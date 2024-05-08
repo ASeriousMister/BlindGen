@@ -93,7 +93,7 @@ class FirstWindow:
 
     def new_user_turn(self):
         if exists('PaperWallet/half1.png'):
-            os.system('pkill evince')
+            os.system('lsof -t PaperWallet/halfkey1.pdf | xargs kill')
             os.remove('PaperWallet/half1.png')
             os.remove('PaperWallet/halfkey1.pdf')
             self.master.withdraw()  
@@ -158,7 +158,7 @@ class SecondWindow:
 
     def go_to_pub_gen(self):
         if exists('PaperWallet/half2.png'):
-            os.system('pkill evince')
+            os.system('lsof -t PaperWallet/halfkey2.pdf | xargs kill')
             os.remove('PaperWallet/half2.png')
             os.remove('PaperWallet/halfkey2.pdf')
             self.master.withdraw()  
