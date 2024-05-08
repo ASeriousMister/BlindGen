@@ -3,3 +3,4 @@ hdwallet
 monero
 qrcode
 pdfkit
+bitcash
