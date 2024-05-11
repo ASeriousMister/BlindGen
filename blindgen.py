@@ -72,6 +72,7 @@ class FirstWindow:
         else:
             # Add random system entropy
             extra_ent = str(system_random.randint(0, sys.maxsize))
+            extra_ent += str(system_random.randint(0, sys.maxsize))
             # create entropy source joining random word to random system entropy
             ent_source = input_text + extra_ent
             # obtain first 128 bits of the private key
@@ -139,6 +140,7 @@ class SecondWindow:
         else:
             # Add random system entropy
             extra_ent = str(system_random.randint(0, sys.maxsize))
+            extra_ent += str(system_random.randint(0, sys.maxsize))
             # create entropy source joining random word to random system entropy
             ent_source = input_text + extra_ent
             # obtain first 128 bits of the private key
