@@ -10,7 +10,7 @@ sudo apt install python3-virtualenv
 Clone this tool and move to its folder
 ```
 git clone github.com/ASeriousMister/BlindGen
-cd /path/SecureGen
+cd /path/BlindGen
 ```
 Create a virtual environment
 ```
