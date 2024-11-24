@@ -4,3 +4,4 @@ monero
 qrcode
 pdfkit
 bitcash
+pillow
